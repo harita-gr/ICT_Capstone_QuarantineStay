@@ -1,0 +1,80 @@
+<div class="card">
+    <div class="card-header">
+      VERIFY YOUR DETAILS
+    </div>
+    <div class="card-body">
+        <table class="table table-borderless">
+            <tbody>
+              <!-- USER DETAILS -->
+              <h4> <u>Customer Details</u> </h4>
+              <tr>
+                <td>Full Name</td>
+                <td>{{orderDetails.fullName}}</td>
+              </tr>
+              <tr> 
+                <td>Age</td>
+                <td>{{orderDetails.age}}</td>
+              </tr>
+              <tr> 
+                <td>Airport</td>
+                <td>{{orderDetails.airport}}</td>
+              </tr>
+              <tr> 
+                <td>Checkin Date</td>
+                <td>{{orderDetails.dateCheckin}}</td>
+              </tr>
+              <tr> 
+                <td>No. of Adults</td>
+                <td>{{orderDetails.adultNo}}</td>
+              </tr>
+              <tr> 
+                <td>No. of Children</td>
+                <td>{{orderDetails.childNo}}</td>
+              </tr>
+              <tr>
+                <td>No.of Days</td>
+                <td>{{orderDetails.noOfDays}}</td>
+              </tr> <br>
+              <h5>Selected:</h5>
+              <tr>                
+                <td>Medical Support</td>
+                <td>{{orderDetails.optMedical}}</td>
+              </tr>
+              <tr> 
+                <td>Travel Support</td>
+                <td>{{orderDetails.optTransport}}</td>
+              </tr> <br>
+
+              <!-- STAY DETAILS -->
+
+              <h4> <u>Stay Details</u> </h4>
+
+              <tr> 
+                <td>Stay Name</td>
+                <td>{{stay.hotelName}}</td>
+              </tr>
+              <tr> 
+                <td>Address</td>
+                <td>{{stay.address}}</td>
+              </tr>
+              <tr> 
+                <td>Price/night</td>
+                <td>{{stay.price}}</td>
+              </tr>
+              <br> <hr>
+              <tr>
+                <td><b>TOTAL PRICE:</b></td>
+                <td> {{totalPrice}} INR</td>
+              </tr>  
+            </tbody>
+          </table>
+         <br> 
+       
+          
+        <br>
+        <button class="btn btn-success"(click)="goToPayment()"> CONTINUE TO MAKE PAYMENT</button>
+        <button class="btn btn-danger" (click)="cancelAlert()"> CANCEL</button>
+        <!-- Payment Gateway -->
+        <!-- Order Success! -->
+    </div>
+  </div>

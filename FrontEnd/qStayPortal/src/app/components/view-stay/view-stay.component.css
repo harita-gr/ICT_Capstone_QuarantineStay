@@ -1,0 +1,35 @@
+
+.card-body{
+    width:90%;
+    margin-left:50px;
+
+
+}
+.term{
+    background-color: rgb(135, 206, 253);
+}
+
+.safety{
+    background-color: rgb(116, 194, 116);
+}
+
+.price{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.type{
+    background-color: rgb(245, 174, 41);
+}
+
+.price .curr{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.book{
+    width:20%;
+    margin:auto;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}

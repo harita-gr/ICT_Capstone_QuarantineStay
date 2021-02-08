@@ -1,0 +1,49 @@
+<div class="sidebar">
+    <div class="sidebar-brand">
+      <h1>Quarantine Stays</h1>
+    </div> <br> <br>
+  
+    <div class="sidebar-menu">
+      <ul>
+        <li>
+            <a routerLink="" class="active"> <span class="fa fa-tachometer "></span> Dashboard</a>
+        </li>
+        <li>
+          <a routerLink=""> <span class=" fa fa-user"></span>My Profile</a>
+        </li>
+        <li>
+          <a routerLink="users"><span class="fa fa-users"></span> Users</a>
+        </li>
+        <li>
+          <a routerLink="registeredStays"> <span class="fa fa-hotel"></span>Stays</a>
+        </li>
+        <li>
+          <a routerLink="orderHistory"><span class="fa fa-history"></span> Order History</a>
+        </li>
+        <li>
+          <a routerLink="" data-toggle="modal" data-target="#exampleModal"><span class="fa fa-sign-out"></span>LOGOUT</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+
+  <!-- Modal - Logout -->
+
+<!-- Modal -->
+<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to logout? </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Continue</button>
+      </div>
+    </div>
+  </div>                                                            
+</div>

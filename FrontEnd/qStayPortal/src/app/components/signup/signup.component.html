@@ -1,0 +1,85 @@
+<div class="card text-center">
+    <div class="card-header">
+      SIGN UP
+    </div>
+    <div class="card-body">
+      <div class="alert alert-success text-center" *ngIf="successMsg">
+        {{successMsg}}
+     </div>
+        <!-- FORM BODY -->
+        <form #userForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+
+           <div class="form-group">
+               <label>Full Name</label>
+               <input type="text" class="form-control" name="fullName" required  [(ngModel)]=userModel.name
+                  #name="ngModel" [class.is-invalid]="name.invalid && name.touched" autofocus>
+           </div>
+           <small class="text-danger" [class.d-none]="name.valid || name.untouched">Name cannot be empty</small>
+           
+           <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" name="email"  required [(ngModel)]=userModel.email
+            #email="ngModel" [class.is-invalid]="email.invalid && email.touched" pattern="^([a-zA-Z\._]{1,30})@([a-zA-Z]{1,20}).([A-Za-z]{2,6})?.([a-zA-Z]{2,5})">
+        </div>
+            <div *ngIf="email.errors && (email.invalid || email.touched)">
+               <small class="text-danger" *ngIf="email.errors.required" [class.d-none]="email.valid || email.untouched">Email cannot be empty</small>
+               <small class="text-danger" *ngIf="email.errors.pattern" [class.d-none]="email.valid || email.untouched">Invalid email pattern</small>
+            </div>
+
+        <div class="form-group">
+            <label>Phone Number</label>
+            <input type="text" class="form-control" name="phone" required [(ngModel)]=userModel.phone
+            #phone="ngModel" [class.is-invalid]="phone.invalid && phone.touched" pattern="^([0-9]{3,10})?([\s.-])?([0-9]{3})?([\s.-])?([0-9]{4})$">
+        </div>
+        <div *ngIf="phone.errors && (phone.invalid || phone.touched)">
+            <small class="text-danger" *ngIf="phone.errors.required" [class.d-none]="phone.valid || phone.untouched">Phone number cannot be empty</small>
+            <small class="text-danger" *ngIf="phone.errors.pattern" [class.d-none]="phone.valid || phone.untouched">Invalid phone number pattern</small>
+         </div>
+
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" name="password" required [(ngModel)]=userModel.password
+            #password="ngModel" [class.is-invalid]="password.invalid && password.touched" pattern="^[\w\S]{8,16}$">
+        </div>
+        <div *ngIf="password.errors && (password.invalid || password.touched)">
+            <small class="text-danger" *ngIf="password.errors.required" [class.d-none]="password.valid || password.untouched">Password cannot be empty</small>
+            <small class="text-danger" *ngIf="password.errors.pattern" [class.d-none]="password.valid || password.untouched">Password must be minimum 8 characters</small>
+         </div>
+         <!-- {{userModel.password}} -->
+
+        <div class="form-group">
+            <label>Confirm Password</label>
+            <input type="password" class="form-control" name="password2" required  [(ngModel)]=userModel.password2
+            #password2="ngModel" [class.is-invalid]="password2.invalid && password2.touched" pattern="{{userModel.password}}">
+        </div><br>
+        <div *ngIf="password2.errors || password2.touched">
+            <small class="text-danger" *ngIf="password2.errors.required" [class.d-none]="password2.valid || password2.untouched">Confirm cannot be empty</small>
+            <small class="text-danger" *ngIf="password2.errors.pattern" [class.d-none]="password2.untouched"> Passwords are not matched</small>
+         </div>
+        <!-- {{ userModel.password2}}
+        {{userModel.password != userModel.password2}} -->
+        <div class="col-12">
+            <button [disabled]="userForm.form.invalid" type="submit" class="btn btn-lg" >SIGN UP</button>
+          </div>
+
+        </form> <hr>
+          <!-- /FORM BODY -->
+        <div> Already Registered? Sign in <a routerLink="/userLogin"> here </a> <br><br>
+            or sign up with: <br>
+            <button type="button" class="btn btn-primary btn-floating mx-1">
+                <i class="fa fa-facebook-f"></i>
+              </button>
+          
+              <button type="button" class="btn btn-primary btn-floating mx-1">
+                <i class="fa fa-google"></i>
+              </button>
+          
+              <button type="button" class="btn btn-primary btn-floating mx-1">
+                <i class="fa fa-twitter"></i>
+              </button>
+        </div>
+         
+    </div>   
+</div>
+    
+<div style="display: none;"></div>

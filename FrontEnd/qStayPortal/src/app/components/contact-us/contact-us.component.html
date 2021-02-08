@@ -1,0 +1,56 @@
+<div class="card">
+    <h3 class="card-header">CONTACT US</h3>
+    <div class="alert alert-success text-center" role="alert" *ngIf="statusMsg">
+        {{statusMsg}}
+      </div>
+    <div class="card-body">
+            <form #contactForm="ngForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-lg-5">
+                                <!-- Name input -->
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="form4Example1">Name</label>
+                                        <input type="text" id="form4Example1" class="form-control" required/>
+                                        
+                                    </div> 
+                                <!-- Email input -->
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form4Example2">Email address</label>
+                                    <input type="email" id="form4Example2" class="form-control" required/>
+                                    
+                                </div>
+                                <!-- Phone no input -->
+
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form4Example1">Phone Number</label>
+                                    <input type="text" id="form4Example1" class="form-control" required />                                  
+                                </div>                                                             
+                    </div>
+                    <div class="col-lg-5">      
+                                <!-- Message input --> 
+                                <div class="form-group mb-4">
+                                <label class="form-label" for="form4Example3">Message</label>
+                                <textarea class="form-control" id="form4Example3" rows="9"  required ></textarea>                             
+                                </div>
+                </div>           
+            </div>
+                <!-- Checkbox -->
+                <div class="form-check d-flex justify-content-center mb-4">
+                <input
+                    class="form-check-input me-2"
+                    type="checkbox"
+                    value=""
+                    id="form4Example4"
+                    checked
+                />
+
+                <label class="form-check-label" for="form4Example4">
+                    Send me a copy of this message
+                </label>
+                </div>
+            
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block mb-4 btn-lg">SEND</button>
+            </form>
+</div>

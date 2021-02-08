@@ -1,0 +1,37 @@
+.footer{
+    background:rgb(170, 214, 214);
+    bottom:0;
+    position: relative;
+    width: 100vw;
+}
+
+.btn{
+    margin:5px;
+    border:1px solid transparent;
+}
+
+h6,p{
+    margin-top:5px;
+}
+
+.connect{
+    /* margin-left: 25px; */
+    text-align: center;
+}
+.copyright{
+    text-align: center;
+}
+
+.credits{
+    text-align: center;
+}
+
+.credit a{ 
+    text-decoration: none;
+    color:black;
+    font-weight: bold;
+}
+img{
+    height: 40px;
+    width: 50px;
+}

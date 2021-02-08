@@ -1,0 +1,19 @@
+.card-main{
+    margin:auto;
+    padding:10px;
+}
+
+.card-header-main{
+    text-align: center;
+    font-weight: bold;
+}
+
+.card-body{
+    margin-top:50px;
+}
+
+.query{
+
+    border-left: 2px solid teal;
+
+}

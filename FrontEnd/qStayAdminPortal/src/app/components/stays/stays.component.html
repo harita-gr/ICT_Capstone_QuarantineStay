@@ -1,0 +1,191 @@
+<div class="stays">
+    <div class="card">
+        <div class="card-header">
+          <h3>REGISTERED STAYS </h3> 
+        </div>
+
+                <!-- Alerts -->
+                <div class="alert alert-success" role="alert" *ngIf="successMsg">
+                  {{successMsg}}
+                  </div>
+                   <div class="alert alert-danger" role="alert" *ngIf="errorMsg">
+                  {{errorMsg}}
+                  </div>
+                <!-- /Alerts -->
+
+        <div class="card-body">
+
+            <button data-bs-target="#addStay" data-bs-toggle="modal">ADD NEW STAY</button> <br>
+            <table class="table table-striped table-responsive table-hover"> 
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Hotel Name</th>
+                    <th>District</th>
+                    <th>Available Rooms</th>
+                    <th>Distance from Airport(km)</th>
+                    <th>Price/Day</th>
+                    <th>Image</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor= "let stay of stays;let indexOfelement=index;">
+                  <tr>
+                     <td>{{indexOfelement + 1}}</td>
+                     <td>{{stay.hotelName}}</td>
+                     <td>{{stay.district}}</td>
+                     <td>{{stay.noOfRooms}}</td>
+                     <td>{{stay.distanceFromAirport}}</td>
+                     <td>{{stay.price}}</td>
+                     <td><img src="{{stay.image}}" height="40px" width="40px"></td>
+                     <td>
+                      <button class="btn btn-warning"  (click)="editStay(stay)"><i class="fa fa-edit"></i></button>&nbsp; &nbsp;
+                      <button class="btn btn-danger" (click)="deleteStay(stay)" data-bs-target="#deleteUser"><i class="fa fa-trash"></i></button>
+                     </td> 
+                </tbody>
+              </table>
+  
+        </div>
+      </div>
+</div>
+
+<!-- Modals -->
+<!-- Add Stay -->
+
+<div class="modal fade" id="addStay" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add new stay</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+         <!-- ALERT-->
+        <div class="alert alert-success" role="alert" *ngIf="successMsg">
+         {{successMsg}}
+         </div>
+          <div class="alert alert-danger" role="alert" *ngIf="errorMsg">
+         {{errorMsg}}
+         </div>
+       <!-- Form Body -->
+       <form #stayForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+         <div class="form-group">
+           <!-- Hotel Name -->
+           <label class="form-label">Hotel Name</label>
+           <input type="text" class="form-control"  name="hotelName" required [(ngModel)]=stay.hotelName
+            #hotelName="ngModel" [class.is-invalid]="hotelName.invalid && hotelName.touched">
+            <small class="text-danger" [class.d-none]="hotelName.valid || hotelName.untouched">Field cannot be empty</small> 
+            <!-- {{stay.hotelName}} -->
+         </div>
+         <!-- Type -->
+         <div class="form-group">
+          <label class="form-label">Type</label>
+          <select class="form-select form-control" name="type" required [(ngModel)]=stay.type
+            #type="ngModel" [class.is-invalid]="type.invalid && type.touched">
+            <option selected value="">Select</option>
+            <option value="Hotel">Hotel</option>
+            <option value="Homestay">Homestay</option>
+            <option value="Resort">Resort</option>
+            <option value="Other">Other</option>
+          </select> 
+          <small class="text-danger" [class.d-none]="type.valid || type.untouched">Please select one option</small> 
+           <!-- {{stay.type}} -->
+        </div>
+        <!-- District -->
+        <div class="form-group">
+          <label class="form-label">District/Airport</label>
+          <select class="form-select form-control" name="district" required [(ngModel)]=stay.district
+          #district="ngModel" [class.is-invalid]="district.invalid && district.touched">>
+            <option selected value="">Select</option>
+            <option  *ngFor="let i of airports" value="{{i}}">{{i}}</option>
+          </select>
+          <small class="text-danger" [class.d-none]="district.valid || district.untouched">Please select one option</small> 
+
+          <!-- {{stay.district}} -->
+        </div>
+        <!-- Distance -->
+        <div class="form-group">
+          <label class="form-label">Distance from airport(km)</label>
+          <input type="text" class="form-control"  name="distance" required [(ngModel)]=stay.distanceFromAirport
+          #distance="ngModel" [class.is-invalid]="distance.invalid && distance.touched">
+          <small class="text-danger" [class.d-none]="distance.valid || distance.untouched">Field cannot be empty</small> 
+          <!-- {{stay.distanceFromAirport}} -->
+        </div>
+        <!-- Address -->
+        <div class="form-group">
+          <label class="form-label">Address with PIN</label>
+          <input type="text" class="form-control"  name="address" required [(ngModel)]=stay.address
+          #address="ngModel" [class.is-invalid]="address.invalid && address.touched">
+          <small class="text-danger" [class.d-none]="address.valid || address.untouched">Field cannot be empty</small> 
+          <!-- {{stay.address}} -->
+        </div>
+        <!-- No of Rooms -->
+        <div class="form-group">
+          <label class="form-label">No.of Rooms Available</label>
+          <input type="number" class="form-control"  name="noOfRooms" required [(ngModel)]=stay.noOfRooms
+          #noOfRooms="ngModel" [class.is-invalid]="noOfRooms.invalid && noOfRooms.touched">
+          <small class="text-danger" [class.d-none]="noOfRooms.valid || noOfRooms.untouched">Field cannot be empty</small> 
+          <!-- {{stay.noOfRooms}} -->
+        </div>
+        <!-- Price/day -->
+        <div class="form-group">
+          <label class="form-label">Price per day</label>
+          <input type="text" class="form-control"  name="price" required [(ngModel)]=stay.price
+          #price="ngModel" [class.is-invalid]="price.invalid && price.touched">
+          <small class="text-danger" [class.d-none]="price.valid || price.untouched">Field cannot be empty</small> 
+          <!-- {{stay.price}} -->
+        </div>
+        <!-- Rating  -->
+        <div class="form-group">
+          <label class="form-label">Rating</label>
+          <input type="text" class="form-control"  name="rating" required [(ngModel)]=stay.rating
+          #rating="ngModel" [class.is-invalid]="rating.invalid && rating.touched">
+          <small class="text-danger" [class.d-none]="rating.valid || rating.untouched">Field cannot be empty</small> 
+          <!-- {{stay.rating}} -->
+        </div>
+        <!-- Facilities -->
+        <label>Facilities (Check all that apply)</label>
+        <div class="form-check form-group">
+          <input class="form-check-input" type="checkbox" name="wifi" value="wifi" id="flexCheckDefault" 
+           (change)="getFacility($event,'Wifi')">
+          <label class="form-check-label" for="flexCheckDefault">
+            Wifi
+          </label>
+        </div>
+        <div class="form-check form-group">
+          <input class="form-check-input" type="checkbox" name="support" value="support" id="flexCheckChecked" (change)="getFacility($event,'24*7 Support')" >
+          <label class="form-check-label" for="flexCheckChecked">
+            24*7 Support
+          </label>
+        </div>
+        <div class="form-check form-group">
+          <input class="form-check-input" type="checkbox" name="tv" value="tv" id="flexCheckChecked" (change)="getFacility($event,'TV')">
+          <label class="form-check-label" for="flexCheckChecked">
+            TV
+          </label>
+        </div>
+
+         <!-- /Facilities -->
+         <!-- Image -->
+        <div class="form-group">
+          <label class="form-label">Image URL</label>
+          <input type="url" class="form-control"  name="image" required [(ngModel)]=stay.image
+          #image="ngModel" [class.is-invalid]="image.invalid && image.touched">
+          <small class="text-danger" [class.d-none]="image.valid || image.untouched">Field cannot be empty</small> 
+          <!-- {{stay.image}} -->
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" [disabled]="stayForm.form.invalid" class="btn btn-primary">Add Stay</button>
+        </div>
+        
+       </form>
+       <!-- /Form Body -->
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- /Modals -->

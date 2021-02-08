@@ -1,0 +1,59 @@
+
+
+<div class="header-container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Quarantine Stays <span class="fa fa-home"></span></a> 
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" routerLink="home" routerLinkActive="active">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="aboutUs" routerLinkActive="active">ABOUT US</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " routerLink="ourServices" tabindex="-1" aria-disabled="true" routerLinkActive="active">SERVICES</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " routerLink="bookStay" tabindex="-1" aria-disabled="true" routerLinkActive="active">BOOK STAY</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " routerLink="faq" tabindex="-1" aria-disabled="true" routerLinkActive="active">FAQ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " routerLink="contactUs" tabindex="-1" aria-disabled="true" routerLinkActive="active">CONTACT US</a>
+          </li>
+        </ul> 
+
+        <ul class="nav-item ml-auto mt-2" *ngIf="!_auth.loggedIn()">
+          <button type="button" class="btn btn-success btn-lg" routerLink="userRegister">SIGN-IN/SIGN-UP</button>
+        </ul>
+
+<!-- My Profile -->
+       <ul class="mt-3" *ngIf="_auth.loggedIn()">
+        <div ngbDropdown class="d-inline-block" style="cursor: pointer;">
+          <a class="" id="dropdownBasic1" ngbDropdownToggle>
+            <img src="../../../assets/images/myprofile.png" width="35px" height="35px"> My Profile
+          </a>
+          <ul ngbDropdownMenu aria-labelledby="dropdownBasic1">
+           <li> <button ngbDropdownItem routerLink="myProfile/myDetails">My Details</button> </li>
+           <li> <button ngbDropdownItem routerLink="myProfile/myOrders">My Orders</button></li>
+          <li><hr class="dropdown-divider"></li>
+        <li><button ngbDropdownItem href="#" (click)="_auth.logOutUser()"><span class="fa fa-sign-out"></span> &nbsp; SIGN OUT</button></li>
+          </ul>
+        </div>
+       </ul>
+     
+<!-- /My Profile -->
+        
+      </div>
+    </div>
+  </nav>
+
+</div>

@@ -1,0 +1,36 @@
+.card{
+    margin:auto;
+    width:35rem;
+    padding:10px;
+    margin-top: 10px;
+    margin-bottom:50px;
+}
+
+.card-header{
+    text-align: center;
+    font-weight: bold;
+}
+
+span .cc{
+    width:15rem;
+    height:10px;
+    border: 1px black solid;
+}
+
+.method{
+    display: inline;
+}
+
+button{
+    margin-left: 20px;
+    border-radius: 100px;
+}
+
+.btns{
+    margin-left:10vw;
+}
+
+.spin{
+    margin-top: 20px;
+    margin-left:17vw;
+}

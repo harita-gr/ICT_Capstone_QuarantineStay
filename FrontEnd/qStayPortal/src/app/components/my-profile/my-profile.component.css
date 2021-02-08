@@ -1,0 +1,27 @@
+.myprofile{
+    margin-bottom: 50px;
+}
+img{
+    width: 50px;
+    height: 50px;
+    margin-left: 5px;
+}
+
+hr{
+    width: 80%;
+    margin-left: 25px;
+}
+.nav{
+    border:1px solid black;
+    margin-left: 5rem;
+}
+
+.content{
+    border:1px solid black;
+}
+
+.title{
+    margin-top: 10px;
+    background-color: rgb(202, 201, 201);
+    padding: 10px;
+}

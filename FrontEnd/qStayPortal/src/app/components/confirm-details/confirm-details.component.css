@@ -1,0 +1,31 @@
+.card{
+    margin:auto;
+    width:35rem;
+    padding:10px;
+    margin-top: 10px;
+    margin-bottom:50px;
+}
+
+.card-header{
+    text-align: center;
+    font-weight: bold;
+}
+
+.btn{
+    border-radius: 100px;
+    /* margin-left: 20vw !important; */
+    position: relative !important;
+    color: white;  
+    border: 1px solid white;  
+    width:300px;
+    margin-top: 10px;
+    margin-left:90px;
+}
+
+/* .btn-succ:hover{
+    background-color: rgb(124, 206, 124);
+} */
+
+h4,h5{
+  width:15rem;
+}

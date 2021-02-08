@@ -1,0 +1,54 @@
+<div class="card">
+    <div class="card-header">
+      <H3>PAYMENT GATEWAY</H3>
+    </div>
+    <div class="card-body">
+        <div class="method">
+        <H5> CARD PAYMENT</H5>
+        <img src="../../../assets/images/CC.jpg" width="200px" height="50px">
+       </div> <br>
+       <!-- PAYMENT FORM -->
+       <form #pytForm="ngForm">
+       <div class="form-group">
+        <label>Card Number</label>
+        <input type="number" class="form-control" name="cno"  required placeholder="XXXX-XXXX-XXXX" [(ngModel)]=cardNo
+        #cno="ngModel" [class.is-invalid]="cno.invalid && cno.touched" pattern="">
+    </div>
+        <div *ngIf="cno.errors && (cno.invalid || cno.touched)">
+           <small class="text-danger" *ngIf="cno.errors.required" [class.d-none]="cno.valid || cno.untouched">Card Number cannot be empty</small>
+           <small class="text-danger" *ngIf="cno.errors.pattern" [class.d-none]="cno.valid || cno.untouched">Invalid pattern</small>
+        </div><br>
+        <div class="form-group">
+            <label>Card Expiry</label>
+            <input type="string" class="form-control" name="cardExp"  required placeholder="MM/YY" [(ngModel)]=cardExpiry
+            #cardExp="ngModel" [class.is-invalid]="cno.invalid && cno.touched" pattern="">
+        </div>
+            <div *ngIf="cardExp.errors && (cardExp.invalid || cardExp.touched)">
+               <small class="text-danger" *ngIf="cardExp.errors.required" [class.d-none]="cardExp.valid || cardExp.untouched">Date cannot be empty</small>
+               <small class="text-danger" *ngIf="cardExp.errors.pattern" [class.d-none]="cardExp.valid || cardExp.untouched">Invalid pattern</small>
+            </div><br>
+
+            <div class="form-group">
+                <label>Card CVC</label>
+                <input type="number" class="form-control" name="cardCVC"  required placeholder="XXX" [(ngModel)]=cardCVCNo
+                #cardCVC="ngModel" [class.is-invalid]="cardCVC.invalid && cardCVC.touched" pattern="">
+            </div>
+                <div *ngIf="cno.errors && (cardCVC.invalid || cardCVC.touched)">
+                   <small class="text-danger" *ngIf="cardCVC.errors.required" [class.d-none]="cardCVC.valid || cardCVC.untouched">Card CVC cannot be empty</small>
+                   <small class="text-danger" *ngIf="cardCVC.errors.pattern" [class.d-none]="cardCVC.valid || cardCVC.untouched">Invalid pattern</small>
+                </div><br>
+
+                <h6>You are making a payment of <b>INR  {{totalPrice}}</b></h6>
+                <br> 
+                <div class="btns">
+                <button type="submit" class="btn btn-success"(click)="placeOrder()"> PROCEED</button>
+                <button class="btn btn-danger" (click)="cancelAlert()"> CANCEL</button>
+                </div>
+
+                <div class="spinner-border text-success spin" role="status" *ngIf="isLoading">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+    </form>    
+   </div>
+</div>     
+

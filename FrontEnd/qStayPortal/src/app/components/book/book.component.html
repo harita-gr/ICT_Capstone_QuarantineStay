@@ -1,0 +1,100 @@
+<div class="card">
+  <div class="card-header text-center">
+    <h3><b>FIND MY STAY</b></h3>
+  </div>
+</div>  
+
+<div class ="top-search">
+<form class ="form col-md-6 mx-auto" #searchForm ="ngForm" (ngSubmit)="searchNow()">
+
+    <!-- Radio Buttons - International/Intestate-->
+    <div class="radio-btns">
+        <div class="form-group">
+            <input type="radio" name="travelType" value="international" [(ngModel)]="search.from" required
+              #from="ngModel" [class.is-invalid]="from.invalid && from.touched">
+            <label for="type">International</label>       
+        </div>
+        <div class="form-group">
+            <input type="radio" name="travelType" value="interstate" [(ngModel)]="search.from" required
+            #from="ngModel" [class.is-invalid]="from.invalid && from.touched">
+            <label for="type">Interstate</label>       
+        </div>
+        <small class="text-danger" [class.d-none]="from.valid || from.untouched">Please select one option</small> 
+    </div>
+
+    <div class="selectopts">
+    <!-- Airport -->
+    <!-- <div class="form-group ">
+      <label>Airport</label>
+      <select class="custom-select form-control" name="airport" required >
+        <option selected>Select</option>
+        <option *ngFor ="let i of airports">{{i}}</option>
+      </select>
+    </div> -->
+    <div class="form-group">
+      <label class="form-label">Arrival Airport</label>
+      <select class="form-select form-control" name="district" required [(ngModel)]=search.district
+      #district="ngModel" [class.is-invalid]="district.invalid && district.touched">
+        <option selected value="">Select</option>
+        <option  *ngFor="let i of airports" value="{{i}}">{{i}}</option>
+      </select>
+      <small class="text-danger" [class.d-none]="district.valid || district.untouched">Please select the airport</small> 
+     </div>
+    <!-- Check-In Date -->
+    <div class="form-group ">
+     <label class="form-label">Check-In</label>
+        <input type="date" class="form-control" required name="date" required [(ngModel)]=search.date>
+    </div>
+    <!-- No. of Days -->
+    <div class="form-group ">
+    <label class="form-label">No. of Days</label>
+    <select class="custom-select" name="noOfDays" class="form-control" required [(ngModel)]=search.noOfDays>
+        <option value=''selected>Select</option>
+        <option value="7">7</option>
+        <option value="14">14</option>
+        <option value="28">28</option>
+      </select>
+    </div>
+</div>
+    <!-- SEARCH & RESET Buttons -->
+  <div class ="btns">
+  
+  <button class="searchbtn btn btn-md" type="submit">SEARCH</button>
+  <button class="resetbtn btn btn-md btn-warning"(click)="resetNow(searchForm)">RESET</button>
+ </div>
+</form>
+  
+</div>
+
+
+<div class ="bottom-result" *ngIf="isSearch">
+    <h3 class="text-center">SEARCH RESULTS</h3>
+    <!-- Result 1 -->
+    <div class="card" *ngFor="let stay of stays">
+        <div class="card-body shadow">
+          <div class="row">
+              <div class="left col-lg-3">
+                 <img src="{{stay.image}}"  width="100%" height="100%">  
+              </div>
+              <div class="right col-lg-4">
+                <h4 class="card-title">{{stay.hotelName}}</h4>
+                <h6 class="card-subtitle mb-2 text-muted">{{stay.district}}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Rating: <span class="badge rounded-pill bg-success">{{stay.rating}}/5</span></h6>
+                <h6 class="card-subtitle mb-2 text-muted">Distance from airport: {{stay.distanceFromAirport}} km</h6>
+
+                <a routerLink="" class="card-link" (click)="viewStay(stay)">View More</a>
+                <hr>
+              </div>    
+              <div class="right col-lg-4">
+                <h6 class="card-subtitle mb-2 text-muted"><span class="badge rounded-pill term">Free Cancellation 24hrs before check-in</span></h6>
+                <h6 class="card-subtitle mb-2 text-muted"><span class="badge rounded-pill safety"> <span class="fa fa-check-circle"></span> &nbsp; Safety & Hygiene certified</span></h6>
+                <h6 class="card-subtitle mb-2 text-muted"><span class="badge bg-danger">PER NIGHT</span></h6>
+                   <div class="price">{{stay.price}} <span class="curr"> INR</span></div>
+                
+              </div>        
+          </div>
+        </div>
+      </div>
+    <!-- /Result 1 -->
+   
+</div>

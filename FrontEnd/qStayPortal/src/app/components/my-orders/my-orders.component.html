@@ -1,0 +1,39 @@
+<div class="card text-center">
+    <div class="card-header">
+      MY ORDERS
+    </div>
+    <div class="card-body">
+
+        <div class="alert alert-info" role="alert" *ngIf="!orders">
+            NO RESULTS FOUND!
+          </div>
+
+        <div class="card" *ngFor="let order of orders">
+            <div class="card-body shadow">
+                <div class="row">
+                    <div class="left col-lg-3">
+                       <img src="{{order.image}}"  width="100%" height="100%">  
+                    </div>
+                    <div class="right col-lg-4">
+                        <h4 class="card-title"> <a routerLink='/viewStay/:order.stayId'>{{order.hotelName}}</a></h4>
+                        <h6 class="card-subtitle mb-2 text-muted">{{order.district}}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted"> <b>Distance from airport:</b> {{order.distanceFromAirport}} km</h6>
+                        <h6 class="card-subtitle mb-2 text-muted"><b>Address:</b> {{order.address}} km</h6>
+                        
+
+                    </div>
+                    <div class="right col-lg-4">
+                        <h6 class="card-subtitle mb-2 text-muted">Adults: {{order.adultNo}}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Children: {{order.childNo}}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Total Price: {{order.totalprice}}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Medical Support: {{order.optMedical}}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Transport Support: {{order.optTransport}}</h6>
+                        <button class="btn btn-danger" (click)="alertCancel()"> CANCEL</button>
+                    </div>
+
+
+                </div>
+                </div>
+
+    </div>
+    </div>

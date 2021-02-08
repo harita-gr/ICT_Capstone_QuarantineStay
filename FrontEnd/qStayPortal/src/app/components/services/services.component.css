@@ -1,0 +1,30 @@
+
+
+.card{
+    margin:auto;
+    padding:10px;
+    position: relative;
+}
+
+.card-header{
+    text-align: center;
+    font-weight: bold;
+}
+
+.col-lg-4{
+    /* border: 1px solid black; */
+    /* height: 50vh; */
+    border: 1px ;
+    box-shadow: black;    
+}
+
+.col-lg-4 img{
+    height: 250px;
+    width:250px;
+    margin-left:50px;
+}
+
+p{
+   font-weight: bold;
+   text-align: center;
+}

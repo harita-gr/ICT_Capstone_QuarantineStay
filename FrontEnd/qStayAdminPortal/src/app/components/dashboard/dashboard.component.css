@@ -1,0 +1,72 @@
+
+
+main{
+    margin-top:110px;
+    margin-left:270px;
+    padding:2rem 1.5rem;
+    background: rgb(219, 214, 214);
+    font-family: 'Poppins',sans-serif;
+    position: relative;
+   
+  
+}
+
+.cards{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap:2rem;
+    margin-top: 1rem;
+    
+}
+
+.card-single{
+    display:flex;
+    justify-content: space-between;
+    background: #fff; 
+    padding: 2rem;  
+    border-radius: 2px;;
+}
+
+.card-single h1+span{
+    color:rgb(207, 207, 207);
+} 
+
+.card-single .fa{
+    font-size: 3rem;
+}
+
+/* Tables */
+
+.recent-grid{
+    margin-top:3.5rem;
+    display: grid;
+    grid-gap:2rem;
+    grid-template-columns: 50% auto;
+}
+
+.bookings,.customers{
+    background: white;
+    border-radius: 5px;
+}
+
+.card-header,card-body{
+ padding: 1rem;
+}
+
+.card-header{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(152, 206, 206);
+}
+
+table button{
+    background-color: teal;
+    color: white;
+    border-radius: 10px;
+    font-size: .8rem ;
+    padding: .5rem 1rem;
+    border: 1px solid teal;
+    margin-left:5px;
+    margin-bottom: 5px;
+}
